@@ -1,0 +1,22 @@
+[project]
+name = "character-voice-agent"
+version = "0.1.0"
+description = "A 3D talking character voice agent (hajji) for the Kiro hackathon."
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "python-dotenv",
+    "boto3",
+    "langgraph",
+    "langchain-aws",
+]
+
+[project.optional-dependencies]
+# Bonus A (microphone + Amazon Transcribe streaming)
+transcribe = [
+    "aws-sdk-transcribe-streaming[awscrt]",
+]
+
+[tool.uvicorn]
+app = "main:app"

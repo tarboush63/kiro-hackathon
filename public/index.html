@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hajji</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.1/examples/jsm/",
+      "@pixiv/three-vrm": "https://cdn.jsdelivr.net/npm/@pixiv/three-vrm@3.5.5/lib/three-vrm.module.min.js"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="scene"></div>
+
+  <!-- Speech bubble (shown while speaking) -->
+  <div id="bubble" class="hidden"></div>
+
+  <!-- Click to start overlay (browsers block audio until a click) -->
+  <div id="start-screen">
+    <button id="start-button">Click to start</button>
+  </div>
+
+  <!-- Chat UI -->
+  <div id="chat">
+    <input id="chat-input" type="text" maxlength="500" placeholder="Say something to hajji..." autocomplete="off" />
+    <button id="send-button">Send</button>
+    <button id="mic-button" class="hidden" title="Hold to talk (or hold Space)">🎤 Hold to talk</button>
+    <button id="dance-button">Dance</button>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>

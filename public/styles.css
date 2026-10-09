@@ -1,0 +1,160 @@
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: Georgia, "Times New Roman", serif;
+  /* Background colors come from character.json; set as a gradient at runtime. */
+  background: linear-gradient(160deg, #000000 0%, #ffffff 100%);
+}
+
+#scene {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#scene canvas {
+  display: block;
+}
+
+/* Click to start overlay */
+#start-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 20;
+  transition: opacity 0.4s ease;
+}
+
+#start-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#start-button {
+  font-family: inherit;
+  font-size: 1.5rem;
+  padding: 0.9rem 2.4rem;
+  border: 2px solid #fff;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+}
+
+#start-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Speech bubble */
+#bubble {
+  position: fixed;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 560px;
+  width: calc(100% - 48px);
+  padding: 16px 22px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a1a1a;
+  border-radius: 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  font-size: 1.15rem;
+  line-height: 1.5;
+  text-align: center;
+  z-index: 15;
+  transition: opacity 0.25s ease;
+}
+
+#bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 12px 12px 0 12px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.95) transparent transparent transparent;
+}
+
+#bubble.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Chat bar */
+#chat {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  width: calc(100% - 48px);
+  max-width: 680px;
+  z-index: 15;
+}
+
+#chat-input {
+  flex: 1;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a1a1a;
+  outline: none;
+}
+
+#chat button {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 999px;
+  background: #2b2b2b;
+  color: #fff;
+  cursor: pointer;
+}
+
+#chat button:hover:not(:disabled) {
+  background: #444;
+}
+
+#chat button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+#dance-button {
+  background: #7a4ad1 !important;
+}
+
+#dance-button.active {
+  background: #b03aa0 !important;
+}
+
+#mic-button {
+  background: #2e7d4f !important;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+#mic-button.recording {
+  background: #c0392b !important;
+}
+
+.hidden {
+  display: none !important;
+}
